@@ -167,10 +167,11 @@ nav { position: sticky; top: 0; z-index: 200; background: rgba(10,10,8,0.97); ba
 .card-bottom { display: flex; align-items: center; justify-content: space-between; }
 .card-price { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; color: var(--gold); }
 .card-btns { display: flex; gap: 0.4rem; }
-.card-order { background: var(--gold); color: #0a0a08; border: none; font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.42rem 0.75rem; border-radius: 1px; cursor: none; transition: background 0.2s; }
+.card-order { background: var(--gold); color: #0a0a08; border: none; font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.42rem 0.75rem; border-radius: 1px; cursor: pointer; transition: background 0.2s; }
 .card-order:hover { background: var(--gold2); }
-.card-colors { background: none; border: 1px solid var(--light-gray); color: var(--gray); font-size: 0.6rem; padding: 0.42rem 0.6rem; border-radius: 1px; cursor: none; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
-.card-colors:hover { border-color: var(--gold); color: var(--gold); }
+.card-colors { background: none; border: 1px solid var(--light-gray); color: var(--gray); font-size: 0.58rem; padding: 0.42rem 0.65rem; border-radius: 1px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; font-family: "Jost", sans-serif; font-weight: 600; letter-spacing: 0.05em; }
+.card-colors:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.07); }
+.card-colors.selected { background: var(--gold); border-color: var(--gold); color: #0a0a08; transform: scale(0.95); }
 
 /* ABOUT */
 .about-section { padding: 7rem 5rem; background: var(--bg2); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
@@ -563,7 +564,7 @@ function renderProducts(filter='all'){
           <span class="card-price">KES ${p.price.toLocaleString()}</span>
           <div class="card-btns">
             <button class="card-order" onclick="openModal(products.find(x=>x.name==='${sn}'));event.stopPropagation()">Order</button>
-            <a class="card-colors" href="#" onclick="event.stopPropagation();window.open('https://wa.me/254758783541?text='+encodeURIComponent('Hi! I\'d like to see more colors for the '+p.name),'_blank')">🎨</a>
+            <button class="card-colors" data-shoe="${p.name}" onclick="(function(e){e.stopPropagation();e.preventDefault();var btn=e.currentTarget;var name=btn.getAttribute('data-shoe');btn.classList.add('selected');btn.textContent='✓ Colors';setTimeout(function(){window.open('https://wa.me/254758783541?text='+encodeURIComponent('Hi I would like to see more types of this shoe'),'_blank');},300);})(event)">🎨 Colors</button>
           </div>
         </div>
       </div>`;
