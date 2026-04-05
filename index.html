@@ -564,7 +564,7 @@ function renderProducts(filter='all'){
           <span class="card-price">KES ${p.price.toLocaleString()}</span>
           <div class="card-btns">
             <button class="card-order" onclick="openModal(products.find(x=>x.name==='${sn}'));event.stopPropagation()">Order</button>
-            <button class="card-colors" data-shoe="${p.name}" onclick="(function(e){e.stopPropagation();e.preventDefault();var btn=e.currentTarget;var name=btn.getAttribute('data-shoe');btn.classList.add('selected');btn.textContent='✓ Colors';setTimeout(function(){window.open('https://wa.me/254758783541?text='+encodeURIComponent('Hi I would like to see more types of this shoe'),'_blank');},300);})(event)">🎨 Colors</button>
+            <button class="card-colors" data-shoe="${p.name}" onclick="(function(e){e.stopPropagation();e.preventDefault();var btn=e.currentTarget;var name=btn.getAttribute('data-shoe');btn.classList.add('selected');btn.textContent='✓ Colors';setTimeout(function(){window.open('https://wa.me/254758783541?text='+encodeURIComponent('Hi I would like to see more types of the ' + name),'_blank');},300);})(event)">🎨 Colors</button>
           </div>
         </div>
       </div>`;
